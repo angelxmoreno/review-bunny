@@ -1,0 +1,65 @@
+{
+    "name": "review-bunny",
+    "version": "0.1.0",
+    "description": "A standalone, Bun-compiled CLI for AI-powered code reviews. Stream a verdict to your terminal and save the full report to disk.",
+    "author": "Angel S. Moreno",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/angelxmoreno/review-bunny.git"
+    },
+    "bugs": {
+        "url": "https://github.com/angelxmoreno/review-bunny/issues"
+    },
+    "homepage": "https://github.com/angelxmoreno/review-bunny#readme",
+    "keywords": [
+        "ai",
+        "code-review",
+        "cli",
+        "claude",
+        "ollama",
+        "bun",
+        "typescript"
+    ],
+    "type": "module",
+    "module": "src/index.ts",
+    "main": "dist/review-bunny",
+    "types": "src/index.ts",
+    "bin": {
+        "review-bunny": "./dist/review-bunny"
+    },
+    "files": [
+        "dist/review-bunny",
+        "LICENSE",
+        "README.md"
+    ],
+    "engines": {
+        "bun": ">=1.1.0"
+    },
+    "scripts": {
+        "dev": "bun run src/index.ts",
+        "build": "bun build --compile src/index.ts --outfile dist/review-bunny",
+        "start": "./dist/review-bunny",
+        "prepare": "lefthook install",
+        "check": "bun run lint:fix && bun run check:types && bun run check:dead-code && bun run check:dupes && bun run check:health",
+        "check:types": "tsc --noEmit",
+        "lint": "biome check .",
+        "lint:fix": "biome check --write .",
+        "test": "bun test",
+        "test:coverage": "bun test --coverage",
+        "check:dead-code": "bun run fallow dead-code",
+        "check:dupes": "bun run fallow dupes",
+        "check:health": "bun run fallow health",
+        "check:audit": "bun run fallow audit"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "^2.5.0",
+        "@commitlint/cli": "^21.0.2",
+        "@commitlint/config-conventional": "^21.0.2",
+        "@types/bun": "^1.3.14",
+        "fallow": "^2.96.0",
+        "lefthook": "^2.1.9",
+        "typescript": "^6.0.3"
+    },
+    "peerDependencies": {}
+}
