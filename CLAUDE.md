@@ -11,6 +11,7 @@
 - **Runtime:** Bun 1.1+
 - **Language:** TypeScript (ES modules)
 - **CLI parsing:** `citty` — small, tree-shakeable, type-safe, and Bun-friendly. Auto-generates help/usage and validates typed args.
+- **Schema validation:** `zod` — schema-first config and type inference.
 - **Build:** `bun build --compile src/index.ts --outfile dist/review-bunny`
 - **Tests:** `bun:test`
 - **Lint/format:** Biome
