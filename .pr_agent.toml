@@ -24,12 +24,15 @@ fallback_models = ["ollama/minimax-m3:cloud"]
 # 128000 is the effective context limit for long diffs
 # (some models will be configured differently in their own sections)
 custom_model_max_tokens = 128000
+# Improves structured-output reliability with local/ollama models
+duplicate_examples = true
 
 [ollama]
 # Ollama Cloud API endpoint
 api_base = "https://ollama.com"
 
 [pr_reviewer]
+model = "ollama/kimi-k2.7-code:cloud"
 # Extra instructions appended to the review prompt
 extra_instructions = """\
 Focus on:
@@ -40,6 +43,7 @@ Focus on:
 """
 
 [pr_code_suggestions]
+model = "ollama/kimi-k2.7-code:cloud"
 # Maximum number of code suggestions per review
 num_code_suggestions = 5
 # Only publish suggestions with a score >= threshold
@@ -47,6 +51,7 @@ suggestions_score_threshold = 7
 extra_instructions = "Suggest test updates when behavior changes. Prefer small, focused improvements."
 
 [pr_description]
+model = "ollama/kimi-k2.7-code:cloud"
 # Generate AI PR titles and descriptions automatically
 generate_ai_title = true
 # Auto-label PRs based on content
