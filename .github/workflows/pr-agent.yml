@@ -17,7 +17,13 @@ jobs:
     if: github.event_name == 'pull_request' || contains(github.event.comment.body, '/review') || contains(github.event.comment.body, '/describe') || contains(github.event.comment.body, '/improve')
     steps:
       - name: PR Agent action step
-        uses: the-pr-agent/pr-agent@main
+        uses: the-pr-agent/pr-agent@v0.36.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OLLAMA_API_KEY: ${{ secrets.OLLAMA_API_KEY }}
+          OLLAMA.API_KEY: ${{ secrets.OLLAMA_API_KEY }}
+          OLLAMA.API_BASE: "https://ollama.com"
+          config.model: "ollama/kimi-k2.7-code:cloud"
+          config.model_turbo: "ollama/gpt-oss:20b-cloud"
+          config.fallback_models: '["ollama/minimax-m3:cloud"]'
+          config.custom_model_max_tokens: "128000"
+          config.duplicate_examples: "true"
