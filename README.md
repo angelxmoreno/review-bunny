@@ -139,6 +139,24 @@ bun run build      # compile the binary to dist/review-bunny
 bun run check      # lint, type-check, dead-code, duplicates, health
 ```
 
+## PR-Agent
+
+This repo uses [PR-Agent](https://github.com/the-pr-agent/pr-agent) for automated pull request reviews, descriptions, and improvement suggestions. It runs as a [GitHub Actions workflow](.github/workflows/pr-agent.yml) and is configured in [`.pr_agent.toml`](./.pr_agent.toml). Reviews are powered by [Ollama Cloud](https://ollama.com/cloud).
+
+- **Default review model:** `kimi-k2.7-code:cloud`
+- **Title/description/improvement model:** `gpt-oss:20b-cloud`
+- **Fallback model:** `minimax-m3:cloud`
+
+To set it up on your fork:
+
+1. Add your Ollama Cloud API key as a GitHub secret named `OLLAMA_API_KEY` at **Settings → Secrets and variables → Actions**.
+2. Open a pull request. PR-Agent will automatically:
+   - Generate a title and description
+   - Review the changes
+   - Suggest improvements
+
+You can also trigger PR-Agent manually by commenting `/review`, `/describe`, or `/improve` on a PR.
+
 ## Contributing
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md).

@@ -1,0 +1,23 @@
+name: PR Agent
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+  issue_comment:
+    types: [created, edited]
+
+permissions:
+  pull-requests: write
+  issues: write
+  contents: read
+
+jobs:
+  pr_agent:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' || contains(github.event.comment.body, '/review') || contains(github.event.comment.body, '/describe') || contains(github.event.comment.body, '/improve')
+    steps:
+      - name: PR Agent action step
+        uses: the-pr-agent/pr-agent@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OLLAMA_API_KEY: ${{ secrets.OLLAMA_API_KEY }}
