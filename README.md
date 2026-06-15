@@ -1,10 +1,10 @@
 # review-bunny 🐰
 
-> A standalone, Bun-compiled CLI for AI-powered code reviews. Stream a verdict to your terminal and save the full report to disk.
+> **Archived.** This project is no longer under active development.
 
-`review-bunny` runs a code review on the current git state of a repository. It spawns an AI reviewer (Claude via Anthropic, or via Ollama's hosted `claude` target), streams the review to your terminal, and writes a markdown report to disk.
+We are shelving `review-bunny` in favor of **[DiffScope](https://github.com/evalops/diffscope)**, an actively maintained, Rust-based code review engine that supports OpenAI, Anthropic Claude, Ollama, and any OpenAI-compatible API.
 
-## Install
+DiffScope covers the same CLI-first, model-agnostic goals `review-bunny` was built for, so we are archiving this repo rather than maintain a parallel implementation.
 
 ### npm (global binary)
 

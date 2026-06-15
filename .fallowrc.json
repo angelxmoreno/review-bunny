@@ -3,7 +3,10 @@
     "entry": ["src/index.{ts,tsx,js,jsx}", "src/main.{ts,tsx,js,jsx}"],
     "ignoreDependencies": ["citty", "nanospinner", "zod"],
     "duplicates": {
-        "minOccurrences": 3
+        "minOccurrences": 2
     },
-    "rules": {}
+    "rules": {},
+    "health": {
+        "ignore": ["tests/**", "**/*.test.ts", "**/*.spec.ts", "**/__tests__/**"]
+    }
 }
